@@ -1,34 +1,32 @@
-// html의 코드를 js를 통해서 수정
-// 자바스크립트 시점에서 html을 바라보는 느낌 
-// html에 있는 title 태그등을 자바스크립트로 가져다가 사용할 수 있다.
+const loginForm = document.querySelector("#login-Form");
+const loginInput = document.querySelector("#login-Form Input");
+const link = document.querySelector("#login-Form a");
 
-document.title = "Hello from html";
+// input 태그의 value를 수정하거나 선입력해놓을 수 있다.
+// if문을 작성해서 user의 실수를 예방할 수 있지만, 
+// 브라우저의 기능을 사용해서 user의 행동을 제한할 수 잇다.
+// ex> form태그안의 input의 required (필수 입력창)
+// form 태크는 입력하게 되면 새로고침이 되는데 이유는 submit하기 때문
 
-//document는 html = 웹사이트와 같다 
+// onLoginSubmit(event)처럼 파라미터를 넣고, 기본동작을 막는 펑션을 써서 막으면
+// 로그를 얻을 수 있다.
 
-// 자바스크립트를 통해서 document를 수정이 가능하다.
-
-// 자바스크립트를 통해서 html의 요소들을 가져오기(grab)
-
-const title = document.querySelector("div.hello:first-child h1");
-
-function handleTitleClick(){
-    title.style.color = "blue";
+function onLoginSubmit(event){
+    event.preventDefault();      //새로고침 차단
+    console.log(loginInput.value);
+    // const username = loginInput.value;
+    // console.log(username);
 }
+loginForm.addEventListener("submit", onLoginSubmit)
 
-function handleMouseOver(){
-    title.style.color = "red";
+// 자바스크립트는 addEventListener를 수행할 때 행동시 function을 찾아
+// 대신 수행해준다. 이때 JS는 function에 첫번째 인자로 object를 넣는다.
+// function 펑션명(object) object에는 event에 대한 여러 정보가 담겨져 있다.
+// 이 정보에 접근하기 위해서는 function 펑션명(object){} 이렇게 작성 후
+// object.~~~()을 수행하여 얻으면 된다.
+
+function handleLinkClick(event){
+    event.preventDefault();
+    console.dir(event);
 }
-
-function handleMouseLeave(){
-    title.style.color = "black";
-}
-
-// 클릭시 function을 실행하는 이벤트리스너
-// parameter에 리스너와, function명만 작성!
-title.addEventListener("click", handleTitleClick);
-title.addEventListener("mouseover", handleMouseOver)
-title.addEventListener("mouseleave", handleMouseLeave)
-
-// 이벤트리스너 Web APIs 하단링크에서 Events 항목에서 찾아보자~
-// https://developer.mozilla.org/en-US/docs/Web/API/Element
+link.addEventListener("click", handleLinkClick)
