@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <title>Document</title>
+</head>
+<body>
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <div class="container-fluid">
+            <!-- nav 영역 -->  
+            <nav class="row" id="nav">
+            <div class="col" style="box-shadow: 0px 0px 3px #000808;">
+                <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                    <div class="container-fluid">
+                      <a class="navbar-brand" href="#">B7</a>
+                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">쇼핑몰</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="#">고남곤</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="#">김장문</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="#">김진경</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="../boardCr/CR_board">김청룡</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="#">안준석</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="#">정세종</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="#">허지수</a>
+                              </li>
+                        </ul>
+                        
+                        <form action="/bseven/member/loginProcess" method="post" class="d-flex">
+                          <input name="member_id" class="form-control me-2" type="text" placeholder="ID" aria-label="Search">
+                          <input name="member_pw" class="form-control me-2" type="password" placeholder="PW" aria-label="Search">
+                          <input id="inputUrl" type="hidden" value="" name="page">
+                          <input class="btn btn-outline-success" type="submit" value="login">
+                          <a href="/bseven/member/registerPage" class="btn btn-outline-success ms-1">Join</a>
+                          </form>
+
+                      </div>
+                    </div>
+                </nav>
+            </div>
+            </nav>
+
+            <!-- 강의 카테고리 -->
+            <div class="row mt-3" style="border-bottom: 1px solid #bdbdbd;">
+              <div class="col p-0">
+                <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                    <div class="container-fluid">
+                      <span class="navbar-brand">Course</span>
+                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-5">
+                          <li class="nav-item ms-5">
+                            <a class="nav-link" aria-current="page" href="#">JAVA</a>
+                          </li>
+                          <li class="nav-item ms-5">
+                            <a class="nav-link" href="#">SQL</a>
+                          </li>
+                          <li class="nav-item ms-5">
+                            <a class="nav-link" href="#">HTML</a>
+                          </li>
+                          <li class="nav-item ms-5">
+                            <a class="nav-link" href="#">JAVASCRIPT</a>
+                          </li>
+                          <li class="nav-item ms-5">
+                            <a class="nav-link" href="#">PYTHON</a>
+                          </li>
+                        </ul>
+                        <form class="d-flex input-group ms-xl-5">
+                            <button type="submit" class="input-group-text ms-5"><i class="bi bi-search"></i></button>
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        </form>
+                      </div>
+                    </div>
+                  </nav>
+              </div>
+            </div>
+            
+            <!-- 강의 업로드 페이지 -->
+            <div class="row mt-5">
+              <div class="col-1"></div>
+              <div class="col">
+                <span>강의 등록</span>
+                <!-- form 시작-->
+                <form action="" method="" enctype="multipart/form-data">
+                  <div class="row mt-3">
+                      <div class="col-6">
+                          <!--이미지 미리보기-->
+                          <img src="../momentum/img/imagePreview.jpg" id="previewImage" class="img-fluid img-thumbnail" style="height: 300px;">
+                          <input type="file" style="display: block;" id="inputThumbnail" name="thumbnail" class="form-control form-control-sm" accept="image/*" multiple>
+                      </div>
+                      <div class="col-6 d-grid mt-3">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingCourseName" placeholder="이것이... 자바...?!">
+                          <label for="floatingCourseName">강의명</label>
+                        </div>
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingTeacherName" placeholder="나의 이름은...">
+                          <label for="floatingTeacherName">강사 이름</label>
+                        </div>
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingCourseDate" placeholder="수강 기간은??">
+                          <label for="floatingCourseDate">강의 기간</label>
+                        </div>
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingCourseSale" placeholder="가격 제시좀">
+                          <label for="floatingCourseSale">강의 가격</label>
+                        </div>
+                      </div>
+                  </div>
+
+                    <!-- 강의 상세 소개 글-->
+                  <div class="row p-3 mt-3" style="background-color: aliceblue;">
+                      <div class="col d-grid">
+                          <textarea name="courseText" rows="5"></textarea>
+                      </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-2">
+                      <label for="coursevideo" class="btn btn-outline-success">영상등록</label>
+                      <input type="file" style="display: none;" id="coursevideo" name="coursevideo" class="form-control form-control-sm" value="강의 영상" onchange="getFileName()" multiple>
+                    </div>
+                    <div class="col" style="border: 1px solid #bdbdbd;">
+                      <span id="videoName" class="d-grid"></span>
+                    </div>
+                    <div class="col text-end">
+                      <input type="submit" value="강좌 등록" class="btn btn-primary">
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="col-1"></div>
+            </div>
+
+            <!-- footer -->
+            <footer class="row mt-xxl-5" style="background-color: #454545;">
+                <div class="col">
+                  <div class="container">
+                    <div class="row m-5" style="font-size: 0.8em;">
+                      <div class="col-8">
+                        <p style="font-size: 12px; line-height: 1.5; color: #bdbdbd">
+                        (주)b7 | 대표자: 강아지 | 사업자번호: 111-11-111111 사업자 정보 확인<br>
+                        통신판매업: 1111-성남분당B-1111 | 개인정보보호책임자: 고양이 | 이메일: mungYang@mungYang.com<br>
+                        주소: 서울시 강남구 대왕강아지 660 스페이스1 301-1호<br>
+                        ©b7. ALL RIGHTS RESERVED<br>
+                        </p>
+                      </div>
+                      <div class="col">
+    
+                        <div class="row text-end">
+                          <div class="col">
+                            <i class="bi bi-apple fs-6"></i>
+                            <i class="bi bi-badge-4k-fill fs-6"></i>
+                            <i class="bi bi-skype fs-6"></i>
+                            <i class="bi bi-slack fs-6"></i>
+                          </div>
+                        </div>
+    
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </footer>
+            </div>
+        
+        </div>
+    
+    
+    
+<script>
+const url = window.location.href;
+const inputUrl = document.querySelector("#inputUrl");
+const inputThumbnail = document.getElementById("inputThumbnail");
+const previewImage = document.getElementById("previewImage");
+
+function readImage(event) {
+  const eT = event.target;
+  var reader = new FileReader();
+  
+  reader.readAsDataURL(eT.files[0]);
+
+  reader.onload = e => {
+    previewImage.src = e.target.result;
+  }
+}
+
+inputThumbnail.addEventListener("change", readImage)
+
+
+function getFileName() {
+  const coursevideo = document.getElementById("coursevideo");
+  var str = "";
+  for(var i=0; i<coursevideo.files.length; i++){
+      var str = str + coursevideo.files[i].name + " ";
+
+    }
+  document.getElementById("videoName").innerText = str;
+}
+
+inputUrl.value = url.substring(url.indexOf(/bseven/)+8);
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>

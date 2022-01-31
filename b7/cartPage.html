@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <title>Document</title>
+</head>
+<body>
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <div class="container-fluid">
+            <!-- nav 영역 -->  
+            <nav class="row" id="nav">
+            <div class="col" style="box-shadow: 0px 0px 3px #000808;">
+                <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                    <div class="container-fluid">
+                      <a class="navbar-brand" href="#">B7</a>
+                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">쇼핑몰</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="#">고남곤</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="#">김장문</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="#">김진경</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="../boardCr/CR_board">김청룡</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="#">안준석</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="#">정세종</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="#">허지수</a>
+                              </li>
+                        </ul>
+                        
+                        <form action="/bseven/member/loginProcess" method="post" class="d-flex">
+                          <input name="member_id" class="form-control me-2" type="text" placeholder="ID" aria-label="Search">
+                          <input name="member_pw" class="form-control me-2" type="password" placeholder="PW" aria-label="Search">
+                          <input id="inputUrl" type="hidden" value="" name="page">
+                          <input class="btn btn-outline-success" type="submit" value="login">
+                          <a href="/bseven/member/registerPage" class="btn btn-outline-success ms-1">Join</a>
+                          </form>
+
+                      </div>
+                    </div>
+                </nav>
+            </div>
+            </nav>
+
+            <!-- 강의 카테고리 -->
+            <div class="row mt-3" style="border-bottom: 1px solid #bdbdbd;">
+              <div class="col p-0">
+                <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                    <div class="container-fluid">
+                      <span class="navbar-brand">Course</span>
+                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-5">
+                          <li class="nav-item ms-5">
+                            <a class="nav-link" aria-current="page" href="#">JAVA</a>
+                          </li>
+                          <li class="nav-item ms-5">
+                            <a class="nav-link" href="#">SQL</a>
+                          </li>
+                          <li class="nav-item ms-5">
+                            <a class="nav-link" href="#">HTML</a>
+                          </li>
+                          <li class="nav-item ms-5">
+                            <a class="nav-link" href="#">JAVASCRIPT</a>
+                          </li>
+                          <li class="nav-item ms-5">
+                            <a class="nav-link" href="#">PYTHON</a>
+                          </li>
+                        </ul>
+                        <form class="d-flex input-group ms-xl-5">
+                            <button type="submit" class="input-group-text ms-5"><i class="bi bi-search"></i></button>
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        </form>
+                      </div>
+                    </div>
+                  </nav>
+              </div>
+            </div>
+
+            <!-- 장바구니 -->
+            <form>
+            <div class="row my-5">
+                <div class="col-1"></div>  
+                <div class="col">
+                    <h1 class="fw-bold">장바구니</h1>
+                    <div class="row mt-5 p-4" style="border-radius: 8px; border: #bdbdbd 1px solid;">
+                        <div class="col">
+                              <h5 class="fw-bold mb-5" >내가 담은 강의</h5>
+                              <div class="row fs-6 mt-3 pb-2" style="border-bottom: 1px solid #dbdbdb;">
+                                   
+                                  <div class="col-3" ><input type="checkbox" value=1000000 name="checkedBox" onclick="changeEvent()"> 이것이 자바다 </div>
+                                  <div class="col-5">PYTHON JAVA HTML</div>
+                                  <div class="col-2">이민규</div>
+                                  <div class="col-2 sale">1000000원</div>
+                              </div>
+                              <div class="row fs-6 mt-3 pb-2" style="border-bottom: 1px solid #dbdbdb;">
+                                <div class="col-3" ><input type="checkbox" value=1000000 name="checkedBox" onclick="changeEvent()"> 이것이 자바다</div>
+                                <div class="col-5">PYTHON JAVA HTML</div>
+                                <div class="col-2">이민규</div>
+                                <div class="col-2 sale">1000000원</div>
+                            </div>
+                            <div class="row fs-6 mt-3 pb-2" style="border-bottom: 1px solid #dbdbdb;">
+                                <div class="col-3" ><input type="checkbox" value=1000000 name="checkedBox" onclick="changeEvent()"> 이것이 자바다</div>
+                                <div class="col-5">PYTHON JAVA HTML</div>
+                                <div class="col-2">이민규</div>
+                                <div class="col-2 sale">1000000원</div>
+                            </div>
+                            <div class="row fs-6 mt-3 pb-2" style="border-bottom: 1px solid #dbdbdb;">
+                                <div class="col-3" ><input type="checkbox" value=1000000 name="checkedBox" onclick="changeEvent()"> 이것이 자바다</div>
+                                <div class="col-5">PYTHON JAVA HTML</div>
+                                <div class="col-2">이민규</div>
+                                <div class="col-2 sale">1000000원</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3 text-center">
+                        <div class="col">
+                          <span id="counts"> 총개수 : </span>
+                        </div>
+                      <div class="col-5">
+                            <input type="submit" formaction="#" value="선택 삭제하기" class="btn btn-primary">
+                            <input type="submit" formaction="#" value="선택 구매하기" class="btn btn-primary">
+                        </div>
+                          <div class="col">
+                            <span id="totals"> 총합 : </span>                            
+                          </div>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+            </div>
+            </form>
+
+            <!-- footer -->
+            <footer class="row mt-xxl-5" style="background-color: #454545;">
+            <div class="col">
+              <div class="container">
+                <div class="row m-5" style="font-size: 0.8em;">
+                  <div class="col-8">
+                    <p style="font-size: 12px; line-height: 1.5; color: #bdbdbd">
+                    (주)b7 | 대표자: 강아지 | 사업자번호: 111-11-111111 사업자 정보 확인<br>
+                    통신판매업: 1111-성남분당B-1111 | 개인정보보호책임자: 고양이 | 이메일: mungYang@mungYang.com<br>
+                    주소: 서울시 강남구 대왕강아지 660 스페이스1 301-1호<br>
+                    ©b7. ALL RIGHTS RESERVED<br>
+                    </p>
+                  </div>
+                  <div class="col">
+
+                    <div class="row text-end">
+                      <div class="col">
+                        <i class="bi bi-apple fs-6"></i>
+                        <i class="bi bi-badge-4k-fill fs-6"></i>
+                        <i class="bi bi-skype fs-6"></i>
+                        <i class="bi bi-slack fs-6"></i>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            </footer>
+        </div>
+    
+    </div>
+
+
+
+<script>
+  const url = window.location.href;
+  const inputUrl = document.querySelector("#inputUrl");
+  const inputList = document.querySelectorAll("input[name='checkedBox']");
+  const totals = document.querySelector("#totals");
+  const counts = document.querySelector("#counts");
+
+  function changeEvent() {
+    let total = 0;
+    let count = 0;
+
+    for(var i=0; i<inputList.length; i++){
+        if(inputList[i].checked) {
+            total += parseInt(inputList[i].value);
+            count += 1;
+        }
+    }
+    total = total.toLocaleString();
+    totals.innerText = `total: ${total}원`;
+    counts.innerText = `총 : ${count} 개`;
+  }
+
+  inputUrl.value = url.substring(url.indexOf(/bseven/)+8);
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
