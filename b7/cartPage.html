@@ -107,39 +107,43 @@
                     <h1 class="fw-bold">장바구니</h1>
                     <div class="row mt-5 p-4" style="border-radius: 8px; border: #bdbdbd 1px solid;">
                         <div class="col">
+                              
+                              <!--강의 forEach문으로 가져옵니다.  value에 바구니 번호-->
                               <h5 class="fw-bold mb-5" >내가 담은 강의</h5>
                               <div class="row fs-6 mt-3 pb-2" style="border-bottom: 1px solid #dbdbdb;">
                                    
-                                  <div class="col-3" ><input type="checkbox" value=1000000 name="checkedBox" onclick="changeEvent()"> 이것이 자바다 </div>
+                                  <div class="col-3" ><input type="checkbox" value="cartNum" name="checkedBox"> 이것이 자바다 </div>
                                   <div class="col-5">PYTHON JAVA HTML</div>
                                   <div class="col-2">이민규</div>
                                   <div class="col-2 sale">1000000원</div>
                               </div>
                               <div class="row fs-6 mt-3 pb-2" style="border-bottom: 1px solid #dbdbdb;">
-                                <div class="col-3" ><input type="checkbox" value=1000000 name="checkedBox" onclick="changeEvent()"> 이것이 자바다</div>
+                                <div class="col-3" ><input type="checkbox" value="cartNum" name="checkedBox"> 이것이 자바다</div>
                                 <div class="col-5">PYTHON JAVA HTML</div>
                                 <div class="col-2">이민규</div>
                                 <div class="col-2 sale">1000000원</div>
                             </div>
                             <div class="row fs-6 mt-3 pb-2" style="border-bottom: 1px solid #dbdbdb;">
-                                <div class="col-3" ><input type="checkbox" value=1000000 name="checkedBox" onclick="changeEvent()"> 이것이 자바다</div>
+                                <div class="col-3" ><input type="checkbox" value="cartNum" name="checkedBox"> 이것이 자바다</div>
                                 <div class="col-5">PYTHON JAVA HTML</div>
                                 <div class="col-2">이민규</div>
-                                <div class="col-2 sale">1000000원</div>
+                                <div class="col-2 sale">2000원</div>
                             </div>
                             <div class="row fs-6 mt-3 pb-2" style="border-bottom: 1px solid #dbdbdb;">
-                                <div class="col-3" ><input type="checkbox" value=1000000 name="checkedBox" onclick="changeEvent()"> 이것이 자바다</div>
+                                <div class="col-3" ><input type="checkbox" value="cartNum" name="checkedBox"> 이것이 자바다</div>
                                 <div class="col-5">PYTHON JAVA HTML</div>
                                 <div class="col-2">이민규</div>
-                                <div class="col-2 sale">1000000원</div>
+                                <div class="col-2 sale">1000원</div>
                             </div>
                         </div>
                     </div>
+                    <!--개수와 합은 js로 되서 서버단에서 구현할 필요 없습니다-->
                     <div class="row mt-3 text-center">
                         <div class="col">
                           <span id="counts"> 총개수 : </span>
                         </div>
                       <div class="col-5">
+                            <!-- form 태그에 action 없고 대신에 input에 formaction으로 경로 지정 -->
                             <input type="submit" formaction="#" value="선택 삭제하기" class="btn btn-primary">
                             <input type="submit" formaction="#" value="선택 구매하기" class="btn btn-primary">
                         </div>
@@ -191,22 +195,27 @@
   const url = window.location.href;
   const inputUrl = document.querySelector("#inputUrl");
   const inputList = document.querySelectorAll("input[name='checkedBox']");
+  const sales = document.querySelectorAll(".sale")
   const totals = document.querySelector("#totals");
   const counts = document.querySelector("#counts");
 
-  function changeEvent() {
+  function handleTotal() {
     let total = 0;
     let count = 0;
-
+    
     for(var i=0; i<inputList.length; i++){
         if(inputList[i].checked) {
-            total += parseInt(inputList[i].value);
+            total += parseInt(sales[i].innerText.substring(0, sales[i].innerText.indexOf("원")));
             count += 1;
         }
     }
     total = total.toLocaleString();
     totals.innerText = `total: ${total}원`;
     counts.innerText = `총 : ${count} 개`;
+  }
+
+  for(var i=0; i<inputList.length; i++){
+    inputList[i].addEventListener("click", handleTotal)
   }
 
   inputUrl.value = url.substring(url.indexOf(/bseven/)+8);
