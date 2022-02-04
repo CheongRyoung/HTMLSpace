@@ -107,27 +107,44 @@
                 <!-- form 시작-->
                 <form action="" method="" enctype="multipart/form-data">
                   <div class="row mt-3">
-                      <div class="col-6">
+                      <div class="col-md-12 col-lg-6">
                           <!--이미지 미리보기-->
                           <img src="../momentum/img/imagePreview.jpg" id="previewImage" class="img-fluid img-thumbnail" style="height: 300px;">
                           <input type="file" style="display: block;" id="inputThumbnail" name="thumbnail" class="form-control form-control-sm" accept="image/*" multiple>
                       </div>
-                      <div class="col-6 d-grid mt-3">
-                        <div class="form-floating">
-                          <input type="text" class="form-control" id="floatingCourseName" placeholder="이것이... 자바...?!" name="11">
-                          <label for="floatingCourseName">강의명</label>
+                      <div class="col-md-12 col-lg-6  d-grid">
+                        <div class="row">
+                          <div class="col">
+							              <span>카테고리를 선택해주세요</span>
+                          </div>
                         </div>
-                        <div class="form-floating">
-                          <input type="text" class="form-control" id="floatingTeacherName" placeholder="나의 이름은...">
-                          <label for="floatingTeacherName">강사 이름</label>
+                        <div class="row mb-3">
+                          <div class="col">
+                            <input type="checkbox"> <span style="font-size: 14px; margin-right: 15px" >자바</span>
+                            <input type="checkbox"> <span style="font-size: 14px; margin-right: 15px" >자바</span>
+                            <input type="checkbox"> <span style="font-size: 14px; margin-right: 15px" >자바</span>
+                            <input type="checkbox"> <span style="font-size: 14px; margin-right: 15px" >자바</span>
+                          </div>
                         </div>
-                        <div class="form-floating">
-                          <input type="number" class="form-control" id="floatingCourseDate" placeholder="수강 기간은??">
-                          <label for="floatingCourseDate">강의 기간</label>
-                        </div>
-                        <div class="form-floating">
-                          <input type="number" class="form-control" id="floatingCourseSale" placeholder="가격 제시좀">
-                          <label for="floatingCourseSale">강의 가격</label>
+                        <div class="row">
+                          <div class="col">
+                            <div class="form-floating my-2">
+                              <input type="text" class="form-control" id="floatingCourseName" placeholder="이것이... 자바...?!" name="11">
+                              <label for="floatingCourseName">강의명</label>
+                            </div>
+                            <div class="form-floating my-2">
+                              <input type="text" class="form-control dis" id="floatingTeacherName" placeholder="나의 이름은..." >
+                              <label for="floatingTeacherName">강사 이름</label>
+                            </div>
+                            <div class="form-floating my-2">
+                              <input type="number" class="form-control" id="floatingCourseDate" placeholder="수강 기간은??">
+                              <label for="floatingCourseDate">강의 기간</label>
+                            </div>
+                            <div class="form-floating my-2">
+                              <input type="number" class="form-control" id="floatingCourseSale" placeholder="가격 제시좀">
+                              <label for="floatingCourseSale">강의 가격</label>
+                            </div>
+                          </div>
                         </div>
                       </div>
                   </div>
@@ -138,15 +155,28 @@
                           <textarea name="courseText" rows="5"></textarea>
                       </div>
                   </div>
+                  <div class="row mt-4">
+                    <div class="col">
+                      <span>추가 버튼을 통해 목차별로 강의 영상을 올려주세요</span>
+                    </div>
+                  </div>
+
                   <div class="row mt-3">
                     <div class="col-2">
-                      <label for="coursevideo" class="btn btn-outline-success">영상등록</label>
-                      <input type="file" style="display: none;" id="coursevideo" name="coursevideo" class="form-control form-control-sm" value="강의 영상" onchange="getFileName()" multiple>
+                          <button class="btn btn-outline-primary p-1 px-2" id="addVideo">추가</button>
+                          <button class="btn btn-outline-danger p-1 px-2" id="deleteVideo">삭제</button>
                     </div>
-                    <div class="col" style="border: 1px solid #bdbdbd;">
-                      <span id="videoName" class="d-grid"></span>
+                    <div class="col-8" id="videoPlus">
+                      <div class="row mb-2" id="videoNode">
+                        <div class="col d-grid">
+                          <input type="text" class="form-text px-2  mt-0" name="courseTitle" placeholder="강의 목차 제목">
+                        </div>
+                        <div class="col  d-grid">
+                          <input type="file" class="coursevideo" name="coursevideo"  value="강의 영상" style="border: 1px solid #bdbdbd;">
+                        </div>
+                      </div>
                     </div>
-                    <div class="col text-end">
+                    <div class="col text-end" style="align-self: flex-end;">
                       <input type="submit" value="강좌 등록" class="btn btn-primary">
                     </div>
                   </div>
@@ -195,6 +225,10 @@ const url = window.location.href;
 const inputUrl = document.querySelector("#inputUrl");
 const inputThumbnail = document.getElementById("inputThumbnail");
 const previewImage = document.getElementById("previewImage");
+const addVideo = document.getElementById("addVideo");
+const videoPlus = document.getElementById("videoPlus");
+const videoNode = document.querySelectorAll("#videoNode");
+const deleteVideo = document.querySelector("#deleteVideo");
 
 function readImage(event) {
   const eT = event.target;
@@ -209,18 +243,21 @@ function readImage(event) {
 
 inputThumbnail.addEventListener("change", readImage)
 
+inputUrl.value = url.substring(url.indexOf(/bseven/)+8);
 
-function getFileName() {
-  const coursevideo = document.getElementById("coursevideo");
-  var str = "";
-  for(var i=0; i<coursevideo.files.length; i++){
-      var str = str + coursevideo.files[i].name + " ";
-
-    }
-  document.getElementById("videoName").innerText = str;
+function handlevideoInputPlus(event){
+  event.preventDefault();
+  var node = document.importNode(videoNode[0], true);
+  videoPlus.appendChild(node);
 }
 
-inputUrl.value = url.substring(url.indexOf(/bseven/)+8);
+function handlevideoInputDelete(event) {
+  event.preventDefault();
+  document.querySelector("#videoPlus").lastElementChild.remove()
+}
+
+addVideo.addEventListener("click", handlevideoInputPlus);
+deleteVideo.addEventListener("click", handlevideoInputDelete)
 
 </script>
 

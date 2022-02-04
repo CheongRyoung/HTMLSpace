@@ -176,7 +176,7 @@
                         </div>
                         
                         </div>
-                    </div>
+                    <div class="col-1"></div>  
                 </div>
             </form>            
             <!-- footer -->
@@ -213,9 +213,10 @@
             
 <script>
     const url = window.location.href;
-    const inputUrl = document.querySelector("#inputUrl");
-
-    inputUrl.value = url.substring(url.indexOf(/bseven/)+8);
+    if(document.querySelector("#inputUrl") != null) {
+	  const inputUrl = document.querySelector("#inputUrl");
+	  inputUrl.value = url.substring(url.indexOf(/bseven/)+8);
+  }
   
     function wordCount(object) {
         const str = object.value;
